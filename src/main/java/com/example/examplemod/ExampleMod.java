@@ -15,8 +15,9 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.jboss.weld.environment.se.Weld;
 import java.util.stream.Collectors;
+import javax.inject.Singleton;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("examplemod")
@@ -26,6 +27,9 @@ public class ExampleMod
     private static final Logger LOGGER = LogManager.getLogger();
 
     public ExampleMod() {
+        System.out.println(Weld.class);
+        System.out.println(Singleton.class);
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
